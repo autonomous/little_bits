@@ -4,7 +4,7 @@ development:
   database: little_bits_development
   host: localhost
   # port: 5432
-  username: trucham
+  username: chris
   password:
   pool: 5
   timeout: 10_000
@@ -14,5 +14,5 @@ test:
   host: localhost
   encoding: utf8
   database: little_bits_test
-  username: trucham
+  username: chris
   password:

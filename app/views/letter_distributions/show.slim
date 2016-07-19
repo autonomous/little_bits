@@ -1,2 +1,5 @@
+#main_container
+#bubbles_container
 javascript:
-  var data = "#{MultiJson.dump(@letter_distribution.data).html_safe}";
+  var json = #{MultiJson.dump(@letter_distribution.data).html_safe};
+= javascript_include_tag 'letter_distributions'
