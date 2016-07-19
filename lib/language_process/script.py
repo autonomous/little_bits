@@ -1,8 +1,9 @@
 import freetype
 import json
+import sys
 
-language = 'en'
-text = 'some text'
+language = sys.argv[1]
+text = sys.argv[2]
 
 size = 65
 face = freetype.Face('Arial Unicode.ttf')
