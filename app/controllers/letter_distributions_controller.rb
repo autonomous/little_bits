@@ -5,6 +5,7 @@ class LetterDistributionsController < ApplicationController
 
   def create
     if @letter_distribution = LetterDistribution.create(letter_distribution_params)
+      Analysis.new(@letter_distribution).perform
       redirect_to letter_distribution_url(@letter_distribution)
     else
       render :new

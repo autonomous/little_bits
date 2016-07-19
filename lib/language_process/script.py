@@ -6,7 +6,7 @@ language = sys.argv[1]
 text = sys.argv[2]
 
 size = 65
-face = freetype.Face('Arial Unicode.ttf')
+face = freetype.Face('lib/language_process/Arial Unicode.ttf')
 face.set_char_size( 50*64 )
 slot = face.glyph
 
@@ -60,7 +60,7 @@ for char in text:
                 row += 1
             i+=1
 
-        x += (slot.advance.x >> 6) 
+        x += (slot.advance.x >> 6)
 
 
         # count overall character appearance
