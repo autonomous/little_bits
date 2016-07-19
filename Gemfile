@@ -28,7 +28,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'sidekiq'
 gem 'slim'
 gem 'pg'
-gem 'virtus'
 gem 'multi_json'
 
 # Use Capistrano for deployment
