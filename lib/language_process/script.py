@@ -1,4 +1,5 @@
 import freetype
+import json
 
 language = 'en'
 text = 'some text'
@@ -68,42 +69,21 @@ for char in text:
             letters_count[char] += 1
 
 # Write out to file
-f1 = open(language+'_letters.json','w')
-f1.write('{\n')
-f1.write('"language_code":"'+language)
-f1.write('",\n"width":'+str(width))
-f1.write(',\n"height":'+str(height))
-f1.write(',\n"pixel_letters":[\n')
-x = 0
-pixel_letters_str = ''
+data = {}
+data['language_code'] = language
+data['width']         = width
+data['height']        = height
+data['pixel_letters'] = []
+
 for p in pixel_letters:
-    pixel_letters_str += '['
+    temp = []
     for l in p:
-        pixel_letters_str += '"'+l+'",'
-    # Remove last comma if we have any
-    if pixel_letters_str[-1:] == ',':
-        pixel_letters_str = pixel_letters_str[:-1]
-    pixel_letters_str += '],'
-    x += 1
+        temp.append(l)
+    data['pixel_letters'].append(temp)
 
-# Remove last comma
-pixel_letters_str = pixel_letters_str[:-1]
-f1.write(pixel_letters_str.encode('utf-8'))
-f1.write('],\n')
-f1.write('"pixel_color":')
-f1.write(str(pixel_color))
-f1.write(',\n')
-f1.write('"letters_count":[')
-
-count_str = ''
+data['pixel_color']   = pixel_color
+data['letters_count'] = []
 for l in letters_count:
-    count_str += '{"character":"'+l+'","value":'+str(letters_count[l])+'},\n';
-count_str = count_str[:-2]
+    data['letters_count'].append({ 'character': l, 'value': letters_count[l] })
 
-f1.write(count_str.encode('utf-8'));
-f1.write(']}')
-f1.close()
-
-f2 = open(language+'_source.txt','w')
-f2.write(text.encode('utf-8'))
-f2.close()
+print(json.dumps(data))
