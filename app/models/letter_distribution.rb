@@ -1,0 +1,2 @@
+class LetterDistribution < ApplicationRecord
+end

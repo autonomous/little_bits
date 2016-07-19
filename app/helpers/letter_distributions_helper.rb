@@ -1,0 +1,2 @@
+module LetterDistributionsHelper
+end
