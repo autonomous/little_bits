@@ -1,5 +1,19 @@
-#main_container
-#bubbles_container
+#title.center.title
+  | LittleBits
+  .subtitle
+    | By Chris Spring and Tamar Rucham
+hr
+#form.center
+  = form_for LetterDistribution.new, html: {class:'pure-form'} do |f|
+    = f.text_area :original_sentence, class: 'text_input'
+    = f.submit "Submit", class: 'pure-button submit_button'
+#sentance.center
+  = @letter_distribution.original_sentence
+.pure-g
+  .pure-u-1-2
+    #main_container.center
+  .pure-u-1-2
+    #bubbles_container.center
 javascript:
   var json = #{MultiJson.dump(@letter_distribution.data).html_safe};
 = javascript_include_tag 'letter_distributions'
